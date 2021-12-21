@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import ThemeWrapper from './components/ThemeWrapper';
 
 const App = () => {
-  return <p className='text-3xl font-bold underline'>Hello world</p>;
+  return (
+    <ThemeWrapper>
+      <p>Hello world</p>
+    </ThemeWrapper>
+  );
 };
 
 ReactDOM.render(
