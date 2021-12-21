@@ -8,14 +8,16 @@ const Dropdown = (props) => {
   const inverse = theme === 'light' ? 'dark' : 'light';
 
   const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
 
   const toggleTheme = (theme) => {
     setTheme(theme === 'light' ? 'dark' : 'light');
     localStorage.setItem('theme', theme === 'light' ? 'dark' : 'light');
   };
 
-  const openModal = () => {
+  const openModal = (type) => {
     setShowModal(true);
+    setModalType(type);
     props.setMenuOpen(false);
   };
 
@@ -37,15 +39,19 @@ const Dropdown = (props) => {
             className='text-left'
             onClick={() => toggleTheme(theme)}
           >{`Switch to ${inverse} theme`}</button>
-          <button className='text-left' onClick={() => openModal()}>
+          <button className='text-left' onClick={() => openModal('how')}>
             How it works?
           </button>
-          <button className='text-left'>About</button>
+          <button className='text-left' onClick={() => openModal('about')}>
+            About
+          </button>
         </div>
       </CSSTransition>
-      {showModal && (
-        <Modal show={showModal} onCancel={() => setShowModal(false)} />
-      )}
+      <Modal
+        show={showModal}
+        onCancel={() => setShowModal(false)}
+        type={modalType}
+      />
     </React.Fragment>
   );
 };
