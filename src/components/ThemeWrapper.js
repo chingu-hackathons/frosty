@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import ThemeContext from '../contexts/ThemeContext';
 
 const ThemeWrapper = ({ children }) => {
-  const [theme, setTheme] = useState('light');
-  console.log('theme', theme);
+  const { theme, setTheme } = useContext(ThemeContext);
 
   // handles theming
   useEffect(() => {
@@ -28,7 +28,7 @@ const ThemeWrapper = ({ children }) => {
 
       return () => window.removeEventListener('change', listener);
     }
-  }, [theme]);
+  }, [theme, setTheme]);
   return (
     <div className={theme}>
       <div className='bg-zinc-200 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 h-screen w-screen'>
