@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { IoMenu, IoClose } from 'react-icons/io5';
 import Dropdown from './Dropdown';
-import { CSSTransition } from 'react-transition-group';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,19 +15,7 @@ const Header = () => {
           <IoMenu className='h-8 w-10' />
         )}
       </button>
-      <CSSTransition
-        in={menuOpen}
-        unmountOnExit
-        timeout={150}
-        classNames={{
-          enter: 'opacity-0',
-          enterActive: 'opacity-100 translate-x-0 transition-all duration-150',
-          exit: 'opacity-100',
-          exitActive: 'opacity-0 scale-0 transition-all duration-150',
-        }}
-      >
-        <Dropdown />
-      </CSSTransition>
+      <Dropdown menuOpen={menuOpen} />
     </header>
   );
 };
