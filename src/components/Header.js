@@ -15,7 +15,7 @@ const Header = () => {
           <IoMenu className='h-8 w-10' />
         )}
       </button>
-      <Dropdown menuOpen={menuOpen} />
+      <Dropdown menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
     </header>
   );
 };
