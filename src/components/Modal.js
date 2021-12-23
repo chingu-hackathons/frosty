@@ -4,19 +4,27 @@ import { CSSTransition } from 'react-transition-group';
 import { IoClose } from 'react-icons/io5';
 import Backdrop from './Backdrop';
 import ThemeContext from '../contexts/ThemeContext';
+import MilkCookie from './MilkCookie';
 
 const ModalOverlay = (props) => {
   switch (props.type) {
     case 'how':
       return (
         <div>
-          <header className='flex justify-between border-b border-b-black pb-2'>
-            <h2 className='text-2xl'>How it works?</h2>
+          <header className='flex justify-between items-center border-b border-b-zinc-700 pb-1'>
+            <h2 className='text-lg'>How it works?</h2>
             <button className='h-10 w-10 rounded'>
               <IoClose className='h-8 w-10' onClick={props.onCancel} />
             </button>
           </header>
-          <main className='pt-2'>test</main>
+          <main className='pt-2 overflow-y-auto'>
+            <p className='text-sm mb-2'>
+              {`As santa travels around the world delivering gifts to software
+              developers, 60% of the households leave milk & cookies and 40%
+              leave him carrots & tea as snacks.`}
+            </p>
+            <p className='text-sm'>{`Santa has a 5000 calorie target. As long as his total calorie intake is below 5000 he can visit 10 homes per second, but he can visit only 5 homes per second when it's greater than or equal to 5000 calories.`}</p>
+          </main>
         </div>
       );
     case 'about':
@@ -24,17 +32,6 @@ const ModalOverlay = (props) => {
     default:
       return null;
   }
-  return (
-    <div>
-      <header>
-        <h2>{props.header}</h2>
-        <button>
-          <IoClose onClick={props.onCancel} />
-        </button>
-      </header>
-      <main>test</main>
-    </div>
-  );
 };
 
 const Modal = (props) => {
