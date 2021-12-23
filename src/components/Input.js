@@ -3,7 +3,7 @@ import CalorieContext from '../contexts/CalorieContext';
 
 const Input = () => {
   const { calorieData, dispatch } = useContext(CalorieContext);
-  const [target, setTarget] = useState(calorieData.homes.target);
+  const [target, setTarget] = useState(calorieData.homeTarget);
 
   const inputHomeCount = (count) => {
     if (count > 0) {
@@ -11,7 +11,7 @@ const Input = () => {
         type: 'SET_HOME_TARGET',
         target: count,
       });
-    } else setTarget(calorieData.homes.target);
+    } else setTarget(calorieData.homeTarget);
   };
 
   return (

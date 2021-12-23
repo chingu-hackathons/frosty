@@ -11,6 +11,7 @@ import Dashboard from './components/Dashboard';
 const App = () => {
   const [theme, setTheme] = useState('light');
   const [calorieData, dispatch] = useReducer(calorieReducer, defaultState);
+  console.log('calorieData', calorieData);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
