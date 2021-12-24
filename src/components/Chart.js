@@ -28,60 +28,61 @@ const Chart = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <Line
-      className='w-full mb-10 px-1 md:px-4'
-      datasetIdKey='id'
-      data={{
-        labels: calorieData.log.map((item, index) => index + 1),
-        datasets: [
-          {
-            id: 1,
-            label: 'Calories',
-            data: calorieData.log,
-            borderColor:
-              theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
-            pointRadius: 2,
-          },
-        ],
-      }}
-      options={{
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Houses Visited',
-              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
-            },
-            ticks: {
-              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
-            },
-            grid: {
-              color:
-                theme === 'dark'
-                  ? 'rgba(228, 228, 231, 0.1)'
-                  : 'rgba(24, 24, 27, 0.1)',
+    <div className='w-full mb-10 px-1 md:px-4 lg:w-2/3'>
+      <Line
+        datasetIdKey='id'
+        data={{
+          labels: calorieData.log.map((item, index) => index + 1),
+          datasets: [
+            {
+              id: 1,
+              label: 'Calories',
+              data: calorieData.log,
               borderColor:
-                theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)', // <-- this line is answer to initial question
+                theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+              pointRadius: 2,
             },
-          },
-          y: {
-            // <-- axis is not array anymore, unlike before in v2.x: '[{'
-            ticks: {
-              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+          ],
+        }}
+        options={{
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: 'Houses Visited',
+                color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+              },
+              ticks: {
+                color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+              },
+              grid: {
+                color:
+                  theme === 'dark'
+                    ? 'rgba(228, 228, 231, 0.1)'
+                    : 'rgba(24, 24, 27, 0.1)',
+                borderColor:
+                  theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)', // <-- this line is answer to initial question
+              },
             },
-            grid: {
-              color:
-                theme === 'dark'
-                  ? 'rgba(228, 228, 231, 0.1)'
-                  : 'rgba(24, 24, 27, 0.1)',
+            y: {
+              // <-- axis is not array anymore, unlike before in v2.x: '[{'
+              ticks: {
+                color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+              },
+              grid: {
+                color:
+                  theme === 'dark'
+                    ? 'rgba(228, 228, 231, 0.1)'
+                    : 'rgba(24, 24, 27, 0.1)',
 
-              borderColor:
-                theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)', // <-- this line is answer to initial question
+                borderColor:
+                  theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)', // <-- this line is answer to initial question
+              },
             },
           },
-        },
-      }}
-    />
+        }}
+      />
+    </div>
   );
 };
 export default Chart;
