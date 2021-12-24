@@ -3,7 +3,7 @@ import CalorieContext from '../contexts/CalorieContext';
 
 const StatCard = (props) => {
   const { calorieData } = useContext(CalorieContext);
-  const { calories, milk, tea, homeTarget, homesVisited, ended } = calorieData;
+  const { calories, homeTarget, homesVisited, ended } = calorieData;
 
   const speed = ended
     ? '0'
@@ -16,11 +16,12 @@ const StatCard = (props) => {
 
   const types = {
     calories: 'Calories',
-    speed: 'Homes/Second',
-    milk: '# of homes that left ',
-    tea: '# of homes that left ',
+    speed: 'Houses/Second',
+    milk: 'Milk & Cookies ',
+    tea: 'Tea & Carrots',
     homesVisited: 'Houses Visited',
     remaining: 'Houses Remaining',
+    time: 'Seconds',
   };
 
   return (
@@ -31,6 +32,8 @@ const StatCard = (props) => {
             ? speed
             : props.type === 'remaining'
             ? remaining
+            : props.type === 'time'
+            ? calorieData.time.toFixed(1)
             : calorieData[props.type]}
         </strong>
       </p>

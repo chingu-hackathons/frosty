@@ -4,7 +4,7 @@ import { IoPlaySharp, IoStopSharp } from 'react-icons/io5';
 
 const StartButton = () => {
   const { calorieData, dispatch } = useContext(CalorieContext);
-  const { calories, milk, tea, homeTarget, homesVisited, log, start } =
+  const { calories, milk, tea, homeTarget, homesVisited, log, start, ended } =
     calorieData;
   const intervalRef = useRef(null);
   const clear = () => window.clearInterval(intervalRef.current);
@@ -15,13 +15,10 @@ const StartButton = () => {
     });
   };
 
-  console.log('calorieData', calorieData);
-
   useEffect(() => {
     const visitHomes = (speed) => {
       for (let i = 0; i < speed; i++) {
         let random = Math.floor(Math.random() * speed);
-        console.log('calories:', calories);
         // if random is a number between 0 and 3, that house gifted tea & carrots
         if (random <= 3) {
           if (calories < 110 || homesVisited === homeTarget) {
@@ -44,7 +41,6 @@ const StartButton = () => {
     };
     if (start) {
       intervalRef.current = window.setInterval(() => {
-        console.log('trigged');
         if (calories > 0 && homeTarget > homesVisited) {
           // if speed is 10 hps
           if (calories < 5000) {
@@ -60,11 +56,11 @@ const StartButton = () => {
     return clear;
   }, [calories, dispatch, homeTarget, homesVisited, start]);
 
-  // useEffect(() => {
-  //   if (start) {
-  //     if (calories )
-  //   }
-  // }, [calories, homeTarget, homesVisited, start])
+  useEffect(() => {
+    if (ended) {
+      clear();
+    }
+  }, [ended]);
 
   return (
     <button

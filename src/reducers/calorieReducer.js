@@ -14,31 +14,36 @@ export const calorieReducer = (state, action) => {
         start: !state.start,
       };
     case 'GIFT_TEA':
-      console.count('tea gifted:');
-      console.group();
-      console.log('state.homesVisited', state.homesVisited);
-      console.log('state.homeTarget', state.homeTarget);
-      console.log(state.homesVisited === state.homeTarget);
-      console.groupEnd();
-      if (state.calories < 110) return state;
-      if (state.homesVisited === state.homeTarget) return state;
+      if (
+        state.calories < 60 ||
+        state.homesVisited === state.homeTarget ||
+        state.ended === true
+      ) {
+        return {
+          ...state,
+          ended: true,
+        };
+      }
+
       return {
         ...state,
         calories: state.calories - 110,
         tea: state.tea + 1,
         homesVisited: state.homesVisited + 1,
         log: [...state.log, state.calories - 110],
+        time: state.calories < 5000 ? state.time + 0.1 : state.time + 0.2,
       };
     case 'GIFT_MILK':
-      console.count('milk gifted:');
-      console.group();
-      console.log('state.homesVisited', state.homesVisited);
-      console.log('state.homeTarget', state.homeTarget);
-      console.log(state.homesVisited === state.homeTarget);
-      console.groupEnd();
-
-      if (state.calories < 60) return state;
-      if (state.homesVisited === state.homeTarget) return state;
+      if (
+        state.calories < 60 ||
+        state.homesVisited === state.homeTarget ||
+        state.ended === true
+      ) {
+        return {
+          ...state,
+          ended: true,
+        };
+      }
 
       return {
         ...state,
@@ -46,6 +51,7 @@ export const calorieReducer = (state, action) => {
         milk: state.milk + 1,
         homesVisited: state.homesVisited + 1,
         log: [...state.log, state.calories + 15],
+        time: state.calories < 5000 ? state.time + 0.1 : state.time + 0.2,
       };
     case 'END':
       return {
@@ -64,7 +70,8 @@ export const defaultState = {
   tea: 0,
   homeTarget: 1000,
   homesVisited: 0,
-  log: [5000, 2445, 4555, 4352, 4535, 4564, 6575],
+  log: [5000],
   start: false,
   ended: false,
+  time: 0,
 };

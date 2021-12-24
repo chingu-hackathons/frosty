@@ -4,6 +4,7 @@ const Stats = () => {
   return (
     <div className='flex flex-row flex-wrap justify-center'>
       <StatCard type='calories' />
+      <StatCard type='time' />
       <StatCard type='speed' />
       <StatCard type='remaining' />
       <StatCard type='homesVisited' />
