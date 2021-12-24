@@ -29,7 +29,7 @@ const Chart = () => {
 
   return (
     <Line
-      className='w-full mb-4 px-1 md:px-4'
+      className='w-full mb-10 px-1 md:px-4'
       datasetIdKey='id'
       data={{
         labels: calorieData.log.map((item, index) => index + 1),
@@ -50,8 +50,11 @@ const Chart = () => {
             title: {
               display: true,
               text: 'Houses Visited',
+              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
             },
-
+            ticks: {
+              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+            },
             grid: {
               color:
                 theme === 'dark'
@@ -63,7 +66,9 @@ const Chart = () => {
           },
           y: {
             // <-- axis is not array anymore, unlike before in v2.x: '[{'
-
+            ticks: {
+              color: theme === 'dark' ? 'rgb(228 228 231)' : 'rgb(24 24 27)',
+            },
             grid: {
               color:
                 theme === 'dark'
