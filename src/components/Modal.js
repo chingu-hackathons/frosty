@@ -4,7 +4,6 @@ import { CSSTransition } from 'react-transition-group';
 import { IoClose } from 'react-icons/io5';
 import Backdrop from './Backdrop';
 import ThemeContext from '../contexts/ThemeContext';
-import MilkCookie from './MilkCookie';
 
 const ModalOverlay = (props) => {
   switch (props.type) {
