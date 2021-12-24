@@ -6,31 +6,73 @@ import Backdrop from './Backdrop';
 import ThemeContext from '../contexts/ThemeContext';
 
 const ModalOverlay = (props) => {
-  switch (props.type) {
-    case 'how':
-      return (
+  return (
+    <div className=''>
+      <header className='flex justify-between items-center border-b border-b-zinc-700 pb-1'>
+        <h2 className='text-base'>About</h2>
+        <button className='h-10 w-10 rounded'>
+          <IoClose className='h-8 w-10' onClick={props.onCancel} />
+        </button>
+      </header>
+      <main className='my-2'>
+        <p className='text-sm mb-2'>
+          Santa dashboard created for{' '}
+          <a
+            target='_blank'
+            rel='noreferrer'
+            className='underline'
+            href='https://github.com/chingu-hackathons/holidayhackathon2021'
+          >
+            Chingu Holiday Hackathon 2021
+          </a>
+        </p>
         <div>
-          <header className='flex justify-between items-center border-b border-b-zinc-700 pb-1'>
-            <h2 className='text-lg'>How it works?</h2>
-            <button className='h-10 w-10 rounded'>
-              <IoClose className='h-8 w-10' onClick={props.onCancel} />
-            </button>
-          </header>
-          <main className='pt-2 overflow-y-auto'>
-            <p className='text-sm mb-2'>
-              {`As santa travels around the world delivering gifts to software
-              developers, 60% of the households leave milk & cookies and 40%
-              leave him carrots & tea as snacks.`}
-            </p>
-            <p className='text-sm'>{`Santa has a 5000 calorie target. As long as his total calorie intake is below 5000 he can visit 10 homes per second, but he can visit only 5 homes per second when it's greater than or equal to 5000 calories.`}</p>
-          </main>
+          <p className='text-sm'>Tech stack:</p>
+          <ul className='list-disc text-sm ml-6'>
+            <li>React</li>
+            <li>Tailwindcss</li>
+            <li>Chart.js</li>
+            <li>react-chartjs-2</li>
+          </ul>
         </div>
-      );
-    case 'about':
-      return;
-    default:
-      return null;
-  }
+      </main>
+      <footer className='my-2 text-sm'>
+        <p>Made by Emir Al</p>
+        <ul className='list-disc text-sm ml-6 '>
+          <li>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='underline'
+              href='https://github.com/themythia'
+            >
+              GitHub
+            </a>
+          </li>
+          <li>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='underline'
+              href='https://emir.al'
+            >
+              Portfolio
+            </a>
+          </li>
+          <li>
+            <a
+              target='_blank'
+              rel='noreferrer'
+              className='underline'
+              href='https://github.com/chingu-hackathons/frosty'
+            >
+              Source Code
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  );
 };
 
 const Modal = (props) => {
@@ -52,7 +94,7 @@ const Modal = (props) => {
         }}
       >
         <div
-          className={`fixed z-50 w-10/12 left-[calc(100vw/12)] top-14 rounded p-4 ${bg} ${text}`}
+          className={`fixed z-50 w-10/12 left-[calc(100vw/12)] top-4 md:top-14 rounded p-2 ${bg} ${text}`}
         >
           <ModalOverlay
             header='tetst-header'
