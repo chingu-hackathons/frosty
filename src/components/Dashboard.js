@@ -10,7 +10,7 @@ const Dashboard = () => {
   const { start } = calorieData;
 
   return (
-    <div className='flex flex-col items-center w-full h-full min-h-screen mt-12'>
+    <div className='flex flex-col items-center w-full py-4'>
       <Chart />
       {!start && <Input />}
       <StartButton />
