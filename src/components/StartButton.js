@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import CalorieContext from '../contexts/CalorieContext';
-import { IoPlaySharp, IoStopSharp } from 'react-icons/io5';
+import { IoPlaySharp, IoStopSharp, IoRepeat } from 'react-icons/io5';
 
 const StartButton = () => {
   const { calorieData, dispatch } = useContext(CalorieContext);
-  const { calories, milk, tea, homeTarget, homesVisited, log, start, ended } =
-    calorieData;
+  const { calories, homeTarget, homesVisited, start, ended } = calorieData;
   const intervalRef = useRef(null);
   const clear = () => window.clearInterval(intervalRef.current);
 
@@ -67,7 +66,12 @@ const StartButton = () => {
       onClick={handleStartStop}
       className='rounded-full py-1 px-2 flex items-center border border-zinc-800 dark:border-zinc-200'
     >
-      {calorieData.start ? (
+      {calorieData.ended ? (
+        <React.Fragment>
+          <IoRepeat className='mr-1' />
+          <span>Reset</span>
+        </React.Fragment>
+      ) : calorieData.start ? (
         <React.Fragment>
           <IoStopSharp className='mr-1' />
           <span>Stop</span>
